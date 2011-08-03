@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="archive-client.hashService" class="fr.paris.lutece.util.signrequest.security.Sha1HashService" />
+    <bean id="archive-client.requestAuthenticatorForWS" class="fr.paris.lutece.util.signrequest.HeaderHashAuthenticator" >
+        <property name="hashService" ref="archive-client.hashService" />
+        <property name="signatureElements" > 
+            <list>
+                <value>archive_item_key</value>
+                <value>folder_to_archive</value>
+                <value>archive_destination</value>
+                <value>archive_name</value>
+                <value>archive_type</value>
+             </list>
+        </property>
+        <property name="privateKey">
+            <value>change me</value>
+        </property>
+    </bean>
+    <bean id="archive-client.requestAuthenticatorForUrl" class="fr.paris.lutece.util.signrequest.RequestHashAuthenticator" >
+        <property name="hashService" ref="archive-client.hashService" />
+        <property name="signatureElements" > 
+            <list>
+                <value>archive_item_key</value>
+                <value>folder_to_archive</value>
+                <value>archive_destination</value>
+                <value>archive_name</value>
+                <value>archive_type</value>
+            </list>
+        </property>
+        <property name="privateKey">
+            <value>change me</value>
+        </property>
+    </bean>
+    
+     <bean id="archive-client.archiveClientService" class="fr.paris.lutece.plugins.archiveclient.service.ArchiveClientWsService">
+    		<property name="requestAuthenticatorForWS" ref="archive-client.requestAuthenticatorForWS"/>
+    		<property name="requestAuthenticatorForUrl" ref="archive-client.requestAuthenticatorForUrl"/>
+    	
+	</bean>
+</beans>
