@@ -51,9 +51,9 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
     {
         List<String> listElements = new ArrayList<String>(  );
         listElements.add( Integer.toString( archiveItemKey ) );
-
+        String strTime=Long.toString( new Date(  ).getTime(  ) ) ;
         String strSignature = ( (AbstractAuthenticator) _requestAuthenticatorForUrl ).buildSignature( listElements,
-                Long.toString( new Date(  ).getTime(  ) ) );
+        		strTime );
 
         StringBuilder strUrl = new StringBuilder(  );
         strUrl.append( AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) );
@@ -62,6 +62,9 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
         strUrl.append( ArchiveClientConstants.PARAM_ARCHIVE_ITEM_KEY );
         strUrl.append( "=" );
         strUrl.append( strSignature );
+        strUrl.append("&");
+        strUrl.append("timestamp=");
+        strUrl.append(strTime);
 
         return strUrl.toString(  );
     }

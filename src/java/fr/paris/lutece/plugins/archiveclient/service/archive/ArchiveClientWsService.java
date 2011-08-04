@@ -75,7 +75,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         params.put( ArchiveClientConstants.PARAM_FOLDER_TO_ARCHIVE, strFolderToArchive );
         params.put( ArchiveClientConstants.PARAM_ARCHIVE_DESTINATION, strArchiveDestination );
         params.put( ArchiveClientConstants.PARAM_ARCHIVE_NAME, strArchiveName );
-        params.put( ArchiveClientConstants.PARAM_ARCHIVE_NAME, strArchiveType );
+        params.put( ArchiveClientConstants.PARAM_ARCHIVE_TYPE, strArchiveType );
 
         // List elements to include to the signature
         List<String> listElements = new ArrayList<String>(  );

@@ -2,7 +2,7 @@
 
     <!-- Plugin Informations -->
     <name>archive</name>
-    <class>fr.paris.lutece.plugins.archive.service.archive.ArchivePlugin</class>
+    <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
     <version>1.0.0-SNAPSHOT</version>
     <description>archive.plugin.description</description>
     <documentation/>
@@ -16,20 +16,7 @@
     <db-pool-required>0</db-pool-required>
 
     
-    <daemons>
-        <daemon>
-            <daemon-id>archiveIndexer</daemon-id>
-            <daemon-name>
-                archive.daemon.archiveIndexer.name
-			</daemon-name>
-            <daemon-description>
-                archive.daemon.archiveIndexer.description
-			</daemon-description>
-            <daemon-class>
-                fr.paris.lutece.plugins.archive.service.archive.DaemonArchive
-			</daemon-class>
-        </daemon>
-    </daemons>
+  
    
    
    

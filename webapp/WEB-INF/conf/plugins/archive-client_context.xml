@@ -23,10 +23,6 @@
         <property name="signatureElements" > 
             <list>
                 <value>archive_item_key</value>
-                <value>folder_to_archive</value>
-                <value>archive_destination</value>
-                <value>archive_name</value>
-                <value>archive_type</value>
             </list>
         </property>
         <property name="privateKey">
@@ -34,7 +30,7 @@
         </property>
     </bean>
     
-     <bean id="archive-client.archiveClientService" class="fr.paris.lutece.plugins.archiveclient.service.ArchiveClientWsService">
+     <bean id="archive-client.archiveClientService" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientWsService">
     		<property name="requestAuthenticatorForWS" ref="archive-client.requestAuthenticatorForWS"/>
     		<property name="requestAuthenticatorForUrl" ref="archive-client.requestAuthenticatorForUrl"/>
     	
