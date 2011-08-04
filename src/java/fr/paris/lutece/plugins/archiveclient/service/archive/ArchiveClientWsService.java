@@ -50,6 +50,7 @@ import java.util.Map;
 
 /**
  * ArchiveClientWsService
+ *
  * @author merlinfe
  *
  */
@@ -59,10 +60,14 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 
     /*
      * (non-Javadoc)
-     * @see fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService#generateArchive(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+     *
+     * @see
+     * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
+     * #generateArchive(java.lang.String, java.lang.String, java.lang.String,
+     * java.lang.String)
      */
     public int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType ) throws HttpAccessException
+        String strArchiveType )
     {
         int nIdgenarateArchive = -1;
         ;
@@ -84,15 +89,14 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         listElements.add( strArchiveName );
         listElements.add( strArchiveType );
 
-        String strResponse = callArchiveWs( strUrl, params, listElements );
-
         try
         {
+            String strResponse = callArchiveWs( strUrl, params, listElements );
             nIdgenarateArchive = Integer.parseInt( strResponse );
         }
-        catch ( NumberFormatException e )
+        catch ( Exception e )
         {
-            // TODO: handle exception
+            AppLogService.error( e );
         }
 
         return nIdgenarateArchive;
@@ -100,11 +104,14 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 
     /*
      * (non-Javadoc)
-     * @see fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService#informationArchive(int)
+     *
+     * @see
+     * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
+     * #informationArchive(int)
      */
     public String informationArchive( int archiveItemKey )
-        throws HttpAccessException
     {
+        String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
             ArchiveClientConstants.URL_REST_INFORMATION_ARCHIVE;
 
@@ -116,17 +123,28 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         List<String> listElements = new ArrayList<String>(  );
         listElements.add( Integer.toString( archiveItemKey ) );
 
-        String strResponse = callArchiveWs( strUrl, params, listElements );
+        try
+        {
+            strResponse = callArchiveWs( strUrl, params, listElements );
+        }
+        catch ( Exception e )
+        {
+            AppLogService.error( e );
+        }
 
         return strResponse;
     }
 
     /*
      * (non-Javadoc)
-     * @see fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService#removeArchive(int)
+     *
+     * @see
+     * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
+     * #removeArchive(int)
      */
-    public void removeArchive( int archiveItemKey ) throws HttpAccessException
+    public void removeArchive( int archiveItemKey )
     {
+        String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
             ArchiveClientConstants.URL_REST_REMOVE_ARCHIVE;
 
@@ -138,17 +156,29 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         List<String> listElements = new ArrayList<String>(  );
         listElements.add( Integer.toString( archiveItemKey ) );
 
-        String strResponse = callArchiveWs( strUrl, params, listElements );
+        try
+        {
+            strResponse = callArchiveWs( strUrl, params, listElements );
+        }
+        catch ( Exception e )
+        {
+            AppLogService.error( e );
+        }
     }
 
     /**
-    * This method calls Rest WS archive
-    * @param strUrl the url
-    * @param params the params to pass in the post
-    * @param listElements the list of elements to include in the signature
-    * @return the response as a string
-    * @throws HttpAccessException the exception if there is a problem
-    */
+     * This method calls Rest WS archive
+     *
+     * @param strUrl
+     *            the url
+     * @param params
+     *            the params to pass in the post
+     * @param listElements
+     *            the list of elements to include in the signature
+     * @return the response as a string
+     * @throws HttpAccessException
+     *             the exception if there is a problem
+     */
     private String callArchiveWs( String strUrl, Map<String, String> params, List<String> listElements )
         throws HttpAccessException
     {
@@ -171,6 +201,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 
     /**
      * setter method for _requestAuthenticatorForWS
+     *
      * @param requestAuthenticatorForWS
      */
     public void setRequestAuthenticatorForWS( RequestAuthenticator requestAuthenticatorForWS )

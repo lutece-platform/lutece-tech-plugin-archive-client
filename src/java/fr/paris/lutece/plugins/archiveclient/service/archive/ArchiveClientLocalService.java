@@ -33,44 +33,38 @@
  */
 package fr.paris.lutece.plugins.archiveclient.service.archive;
 
-import fr.paris.lutece.util.httpaccess.HttpAccessException;
+import fr.paris.lutece.plugins.archive.service.archive.IArchiveService;
 
 
 /**
- * class for calling archive service
+ *
  * @author merlinfe
  *
  */
-public interface IArchiveClientService
+public class ArchiveClientLocalService extends AbstractArchiveClientService
 {
-    /**
-     * request for archiving an folder
-     * @param strFolderToArchive path to the folder to archive
-     * @param strArchiveDestination path to the destination folder which will store the archive
-     * @param strArchiveName the name of the archive
-     * @param strArchiveType the archive type(zip,..)
-     * @return the archive id
-     */
-    int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType );
+    private IArchiveService _archiveService;
 
-    /**
-     * return the state of the archive with the ID parameter is provided
-     * @param archiveItemKey the archive id
-     * @return the state of the archive
-     */
-    String informationArchive( int archiveItemKey );
+    public int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
+        String strArchiveType )
+    {
+        return _archiveService.generateArchive( strFolderToArchive, strArchiveDestination, strArchiveName,
+            strArchiveType );
+    }
 
-    /**
-     *  remove the archive with the ID parameter is provided
-     * @param archiveItemKey the archive id
-     */
-    void removeArchive( int archiveItemKey );
+    public String informationArchive( int archiveItemKey )
+    {
+        // TODO Auto-generated method stub
+        return _archiveService.informationArchive( archiveItemKey );
+    }
 
-    /**
-     * get the url of the archive with the ID parameter is provided
-     * @param archiveItemKey the archive id
-     * @return the url of the archive
-     */
-    String getDownloadUrl( int archiveItemKey );
+    public void removeArchive( int archiveItemKey )
+    {
+        _archiveService.removeArchive( archiveItemKey );
+    }
+
+    public void setArchiveService( IArchiveService archiveService )
+    {
+        this._archiveService = archiveService;
+    }
 }

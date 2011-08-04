@@ -29,10 +29,18 @@
             <value>change me</value>
         </property>
     </bean>
-    
-     <bean id="archive-client.archiveClientService" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientWsService">
+    <!-- used a archive service distant -->
+     <bean id="archive-client.archiveClientServiceWS" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientWsService">
     		<property name="requestAuthenticatorForWS" ref="archive-client.requestAuthenticatorForWS"/>
     		<property name="requestAuthenticatorForUrl" ref="archive-client.requestAuthenticatorForUrl"/>
     	
 	</bean>
+	  <!-- used a local archive service -->
+	 <bean id="archive-client.archiveClientLocalService" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientLocalService">
+    		<property name="archiveService" ref="archive.archiveService"/>		
+	</bean>
+	
+	
+	
+	
 </beans>
