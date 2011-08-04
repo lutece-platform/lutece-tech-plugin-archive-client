@@ -35,36 +35,40 @@ package fr.paris.lutece.plugins.archiveclient.service.util;
 
 
 /**
- * 
+ *
  * Constants
- * 
+ *
  */
-public final class ArchiveClientConstants {
-	public static String ARCHIVE_STATE_INITIAL = "INIT";
-	public static String ARCHIVE_STATE_USED = "USED";
-	public static String ARCHIVE_STATE_ERROR = "ERROR";
-	public static String ARCHIVE_STATE_FINAL = "FINAL";
-	public static String ARCHIVE_TYPE_ZIP = "ZIP";
+public final class ArchiveClientConstants
+{
+    public static String ARCHIVE_STATE_INITIAL = "INIT";
+    public static String ARCHIVE_STATE_USED = "USED";
+    public static String ARCHIVE_STATE_ERROR = "ERROR";
+    public static String ARCHIVE_STATE_FINAL = "FINAL";
+    public static String ARCHIVE_TYPE_ZIP = "ZIP";
 
-	// PARAMETERS
-	public static final String PARAM_FOLDER_TO_ARCHIVE = "folder_to_archive";
-	public static final String PARAM_ARCHIVE_DESTINATION = "archive_destination";
-	public static final String PARAM_ARCHIVE_NAME = "archive_name";
-	public static final String PARAM_ARCHIVE_TYPE = "archive_type";
-	public static final String PARAM_ARCHIVE_ITEM_KEY = "archive_item_key";
-	// URL REST ARCHIVE
-	public static final String URL_REST_GENERATE_ARCHIVE = "/rest/archive/generateArchive";
-	public static final String URL_REST_INFORMATION_ARCHIVE= "/rest/archive/informationArchive";
-	public static final String URL_REST_REMOVE_ARCHIVE= "/rest/archive/removeArchive";
-	//URL DOWNLOAD ARCHIVE 
-	public static final String URL_DOWNLOAD_ARCHIVE = "/downloadArchive";
-	// PROPERTIES
+    // PARAMETERS
+    public static final String PARAM_FOLDER_TO_ARCHIVE = "folder_to_archive";
+    public static final String PARAM_ARCHIVE_DESTINATION = "archive_destination";
+    public static final String PARAM_ARCHIVE_NAME = "archive_name";
+    public static final String PARAM_ARCHIVE_TYPE = "archive_type";
+    public static final String PARAM_ARCHIVE_ITEM_KEY = "archive_item_key";
+
+    // URL REST ARCHIVE
+    public static final String URL_REST_GENERATE_ARCHIVE = "/rest/archive/generateArchive";
+    public static final String URL_REST_INFORMATION_ARCHIVE = "/rest/archive/informationArchive";
+    public static final String URL_REST_REMOVE_ARCHIVE = "/rest/archive/removeArchive";
+
+    //URL DOWNLOAD ARCHIVE 
+    public static final String URL_DOWNLOAD_ARCHIVE = "/jsp/site/plugins/archive/DoDownloadArchive.jsp";
+
+    // PROPERTIES
     public static final String PROPERTY_WEBAPP_ARCHIVE_REST_URL = "archive-client.webapp.archive.rest.url";
-    
-	
-	/**
-	 * Constants
-	 */
-	private ArchiveClientConstants() {
-	}
+
+    /**
+     * Constants
+     */
+    private ArchiveClientConstants(  )
+    {
+    }
 }
