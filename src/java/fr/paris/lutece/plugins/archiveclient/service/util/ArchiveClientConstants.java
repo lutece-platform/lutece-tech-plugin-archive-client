@@ -53,6 +53,8 @@ public final class ArchiveClientConstants
     public static final String PARAM_ARCHIVE_NAME = "archive_name";
     public static final String PARAM_ARCHIVE_TYPE = "archive_type";
     public static final String PARAM_ARCHIVE_ITEM_KEY = "archive_item_key";
+    public static final String PARAM_SIGNATURE = "signature";
+    public static final String PARAM_TIMESTAMP = "timestamp";
 
     // URL REST ARCHIVE
     public static final String URL_REST_GENERATE_ARCHIVE = "/rest/archive/generateArchive";

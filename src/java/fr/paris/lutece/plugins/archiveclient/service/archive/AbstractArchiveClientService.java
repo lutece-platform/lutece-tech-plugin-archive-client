@@ -33,14 +33,15 @@
  */
 package fr.paris.lutece.plugins.archiveclient.service.archive;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientConstants;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.signrequest.AbstractAuthenticator;
 import fr.paris.lutece.util.signrequest.RequestAuthenticator;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import fr.paris.lutece.util.url.UrlItem;
 
 
 public abstract class AbstractArchiveClientService implements IArchiveClientService
@@ -56,18 +57,13 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
         String strSignature = ( (AbstractAuthenticator) _requestAuthenticatorForUrl ).buildSignature( listElements,
                 strTime );
 
-        StringBuilder strUrl = new StringBuilder(  );
-        strUrl.append( AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) );
-        strUrl.append( ArchiveClientConstants.URL_DOWNLOAD_ARCHIVE );
-        strUrl.append( "?" );
-        strUrl.append( ArchiveClientConstants.PARAM_ARCHIVE_ITEM_KEY );
-        strUrl.append( "=" );
-        strUrl.append( strSignature );
-        strUrl.append( "&" );
-        strUrl.append( "timestamp=" );
-        strUrl.append( strTime );
+        UrlItem url = new UrlItem( AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) + 
+        		ArchiveClientConstants.URL_DOWNLOAD_ARCHIVE );
+        url.addParameter( ArchiveClientConstants.PARAM_ARCHIVE_ITEM_KEY, archiveItemKey );
+        url.addParameter( ArchiveClientConstants.PARAM_SIGNATURE, strSignature );
+        url.addParameter( ArchiveClientConstants.PARAM_TIMESTAMP, strTime );
 
-        return strUrl.toString(  );
+        return url.getUrl(  );
     }
 
     public void setRequestAuthenticatorForUrl( RequestAuthenticator requestAuthenticatorForUrl )
