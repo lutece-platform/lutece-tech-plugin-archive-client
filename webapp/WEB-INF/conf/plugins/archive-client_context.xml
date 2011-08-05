@@ -30,17 +30,18 @@
         </property>
     </bean>
     <!-- used a archive service distant -->
-     <bean id="archive-client.archiveClientServiceWS" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientWsService">
+     <bean id="archive-client.archiveClientServiceWS" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientWsService" parent="archive-client.abstractArchiveClientService">
     		<property name="requestAuthenticatorForWS" ref="archive-client.requestAuthenticatorForWS"/>
-    		<property name="requestAuthenticatorForUrl" ref="archive-client.requestAuthenticatorForUrl"/>
-    	
+    		
 	</bean>
 	  <!-- used a local archive service -->
-	 <bean id="archive-client.archiveClientLocalService" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientLocalService">
+	 <bean id="archive-client.archiveClientLocalService" class="fr.paris.lutece.plugins.archiveclient.service.archive.ArchiveClientLocalService" parent="archive-client.abstractArchiveClientService">
     		<property name="archiveService" ref="archive.archiveService"/>		
 	</bean>
 	
 	
-	
+	 <bean id="archive-client.abstractArchiveClientService" class="fr.paris.lutece.plugins.archiveclient.service.archive.AbstractArchiveClientService" abstract="true">
+    		<property name="requestAuthenticatorForUrl" ref="archive-client.requestAuthenticatorForUrl"/>
+    </bean>
 	
 </beans>
