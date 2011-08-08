@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.archiveclient.service.archive;
 
 import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientConstants;
+import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientException;
 import fr.paris.lutece.portal.service.util.AppLogService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.httpaccess.HttpAccess;
@@ -67,7 +68,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
      * java.lang.String)
      */
     public int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType )
+        String strArchiveType )throws ArchiveClientException
     {
         int nIdgenarateArchive = -1;
         ;
@@ -97,6 +98,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         catch ( Exception e )
         {
             AppLogService.error( e );
+            throw new ArchiveClientException(e);
         }
 
         return nIdgenarateArchive;
@@ -109,7 +111,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
      * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
      * #informationArchive(int)
      */
-    public String informationArchive( int archiveItemKey )
+    public String informationArchive( int archiveItemKey )throws ArchiveClientException
     {
         String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
@@ -130,6 +132,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         catch ( Exception e )
         {
             AppLogService.error( e );
+            throw new ArchiveClientException(e);
         }
 
         return strResponse;
@@ -142,7 +145,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
      * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
      * #removeArchive(int)
      */
-    public void removeArchive( int archiveItemKey )
+    public void removeArchive( int archiveItemKey )throws ArchiveClientException
     {
         String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
@@ -160,9 +163,11 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         {
             strResponse = callArchiveWs( strUrl, params, listElements );
         }
-        catch ( Exception e )
+        catch ( Exception  e )
         {
             AppLogService.error( e );
+            throw new ArchiveClientException(e);
+            
         }
     }
 

@@ -33,7 +33,7 @@
  */
 package fr.paris.lutece.plugins.archiveclient.service.archive;
 
-import fr.paris.lutece.util.httpaccess.HttpAccessException;
+import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientException;
 
 
 /**
@@ -52,20 +52,20 @@ public interface IArchiveClientService
      * @return the archive id
      */
     int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType );
+        String strArchiveType ) throws ArchiveClientException;
 
     /**
      * return the state of the archive with the ID parameter is provided
      * @param archiveItemKey the archive id
      * @return the state of the archive
      */
-    String informationArchive( int archiveItemKey );
+    String informationArchive( int archiveItemKey ) throws ArchiveClientException;
 
     /**
      *  remove the archive with the ID parameter is provided
      * @param archiveItemKey the archive id
      */
-    void removeArchive( int archiveItemKey );
+    void removeArchive( int archiveItemKey )throws ArchiveClientException;
 
     /**
      * get the url of the archive with the ID parameter is provided

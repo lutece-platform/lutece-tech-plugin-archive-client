@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.archiveclient.service.archive;
 
 import fr.paris.lutece.plugins.archive.service.archive.IArchiveService;
+import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientException;
 
 
 /**
@@ -46,19 +47,19 @@ public class ArchiveClientLocalService extends AbstractArchiveClientService
     private IArchiveService _archiveService;
 
     public int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType )
+        String strArchiveType )throws ArchiveClientException
     {
         return _archiveService.generateArchive( strFolderToArchive, strArchiveDestination, strArchiveName,
             strArchiveType );
     }
 
-    public String informationArchive( int archiveItemKey )
+    public String informationArchive( int archiveItemKey )throws ArchiveClientException
     {
         // TODO Auto-generated method stub
         return _archiveService.informationArchive( archiveItemKey );
     }
 
-    public void removeArchive( int archiveItemKey )
+    public void removeArchive( int archiveItemKey )throws ArchiveClientException
     {
         _archiveService.removeArchive( archiveItemKey );
     }
