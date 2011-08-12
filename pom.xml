@@ -57,6 +57,7 @@
 
 	<properties>
 		<jiraProjectName>ARCHIVECLIENT</jiraProjectName>
+		<jiraComponentId>10572</jiraComponentId>
 	</properties>
 	 <scm>
         <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/plugin-archive-client</connection>
