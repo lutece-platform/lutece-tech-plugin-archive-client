@@ -8,10 +8,6 @@
         <property name="signatureElements" > 
             <list>
                 <value>archive_item_key</value>
-                <value>folder_to_archive</value>
-                <value>archive_destination</value>
-                <value>archive_name</value>
-                <value>archive_type</value>
              </list>
         </property>
         <property name="privateKey">

@@ -71,7 +71,6 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         String strArchiveType )throws ArchiveClientException
     {
         int nIdgenarateArchive = -1;
-        ;
 
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
             ArchiveClientConstants.URL_REST_GENERATE_ARCHIVE;
@@ -85,10 +84,6 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 
         // List elements to include to the signature
         List<String> listElements = new ArrayList<String>(  );
-        listElements.add( strFolderToArchive );
-        listElements.add( strArchiveDestination );
-        listElements.add( strArchiveName );
-        listElements.add( strArchiveType );
 
         try
         {
@@ -147,7 +142,6 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
      */
     public void removeArchive( int archiveItemKey )throws ArchiveClientException
     {
-        String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
             ArchiveClientConstants.URL_REST_REMOVE_ARCHIVE;
 
@@ -161,7 +155,7 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 
         try
         {
-            strResponse = callArchiveWs( strUrl, params, listElements );
+            callArchiveWs( strUrl, params, listElements );
         }
         catch ( Exception  e )
         {
