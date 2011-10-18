@@ -37,17 +37,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientConstants;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.signrequest.AbstractAuthenticator;
 import fr.paris.lutece.util.signrequest.RequestAuthenticator;
 import fr.paris.lutece.util.url.UrlItem;
 
-
+/**
+ * 
+ * AbstractArchiveClientService
+ *
+ */
 public abstract class AbstractArchiveClientService implements IArchiveClientService
 {
     private RequestAuthenticator _requestAuthenticatorForUrl;
 
+    /**
+     * {@inheritDoc}
+     */
     public String getDownloadUrl( int archiveItemKey )
     {
         List<String> listElements = new ArrayList<String>(  );
@@ -57,8 +66,7 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
         String strSignature = ( (AbstractAuthenticator) _requestAuthenticatorForUrl ).buildSignature( listElements,
                 strTime );
 
-        UrlItem url = new UrlItem( AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) + 
-        		ArchiveClientConstants.URL_DOWNLOAD_ARCHIVE );
+        UrlItem url = new UrlItem( getBaseUrl(  ) + ArchiveClientConstants.URL_DOWNLOAD_ARCHIVE );
         url.addParameter( ArchiveClientConstants.PARAM_ARCHIVE_ITEM_KEY, archiveItemKey );
         url.addParameter( ArchiveClientConstants.PARAM_SIGNATURE, strSignature );
         url.addParameter( ArchiveClientConstants.PARAM_TIMESTAMP, strTime );
@@ -66,8 +74,28 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
         return url.getUrl(  );
     }
 
+    /**
+     * Set the request authenticator
+     * @param requestAuthenticatorForUrl the request authenticator
+     */
     public void setRequestAuthenticatorForUrl( RequestAuthenticator requestAuthenticatorForUrl )
     {
         this._requestAuthenticatorForUrl = requestAuthenticatorForUrl;
+    }
+
+    /**
+     * Get the base url. It fetches the <code>lutece.base.url</code> first, then the <code>lutece.prod.url</code>.
+     * @return the base url
+     */
+    private String getBaseUrl(  )
+    {
+    	String strBaseUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_LUTECE_BASE_URL );
+
+        if ( StringUtils.isBlank( strBaseUrl ) )
+        {
+            strBaseUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_LUTECE_PROD_URL );
+        }
+        
+        return strBaseUrl;
     }
 }

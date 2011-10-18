@@ -66,6 +66,8 @@ public final class ArchiveClientConstants
 
     // PROPERTIES
     public static final String PROPERTY_WEBAPP_ARCHIVE_REST_URL = "archive-client.webapp.archive.rest.url";
+    public static final String PROPERTY_LUTECE_BASE_URL = "lutece.base.url";
+    public static final String PROPERTY_LUTECE_PROD_URL = "lutece.prod.url";
 
     /**
      * Constants
