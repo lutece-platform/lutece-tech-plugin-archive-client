@@ -8,7 +8,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.paris.lutece.plugins</groupId>
 	<artifactId>plugin-archive-client</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>Lutece archive client plugin </name>
 	<description>archive client plugin </description>
 	<packaging>lutece-plugin</packaging>
@@ -59,8 +59,8 @@
 		<jiraComponentId>10572</jiraComponentId>
 	</properties>
 	 <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/plugin-archive-client</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/plugin-archive-client</developerConnection>
-        <url>http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/plugin-archive-client</url>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/tags/plugin-archive-client-1.0.2</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/plugin-archive-client-1.0.2</developerConnection>
+        <url>http://dev.lutece.paris.fr/svn/lutece/portal/tags/plugin-archive-client-1.0.2</url>
     </scm>
 </project>
