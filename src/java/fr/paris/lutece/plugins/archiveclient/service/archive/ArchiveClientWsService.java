@@ -59,16 +59,11 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 {
     private RequestAuthenticator _requestAuthenticatorForWS;
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
-     * #generateArchive(java.lang.String, java.lang.String, java.lang.String,
-     * java.lang.String)
+    /**
+     * {@inheritDoc}
      */
     public int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType )throws ArchiveClientException
+        String strArchiveType ) throws ArchiveClientException
     {
         int nIdgenarateArchive = -1;
 
@@ -93,20 +88,17 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         catch ( Exception e )
         {
             AppLogService.error( e );
-            throw new ArchiveClientException(e);
+            throw new ArchiveClientException( e );
         }
 
         return nIdgenarateArchive;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
-     * #informationArchive(int)
+    /**
+     * {@inheritDoc}
      */
-    public String informationArchive( int archiveItemKey )throws ArchiveClientException
+    public String informationArchive( int archiveItemKey )
+        throws ArchiveClientException
     {
         String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
@@ -127,20 +119,16 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         catch ( Exception e )
         {
             AppLogService.error( e );
-            throw new ArchiveClientException(e);
+            throw new ArchiveClientException( e );
         }
 
         return strResponse;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * fr.paris.lutece.plugins.archiveclient.service.archive.IArchiveClientService
-     * #removeArchive(int)
+    /**
+     * {@inheritDoc}
      */
-    public void removeArchive( int archiveItemKey )throws ArchiveClientException
+    public void removeArchive( int archiveItemKey ) throws ArchiveClientException
     {
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
             ArchiveClientConstants.URL_REST_REMOVE_ARCHIVE;
@@ -157,26 +145,20 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
         {
             callArchiveWs( strUrl, params, listElements );
         }
-        catch ( Exception  e )
+        catch ( Exception e )
         {
             AppLogService.error( e );
-            throw new ArchiveClientException(e);
-            
+            throw new ArchiveClientException( e );
         }
     }
 
     /**
      * This method calls Rest WS archive
-     *
-     * @param strUrl
-     *            the url
-     * @param params
-     *            the params to pass in the post
-     * @param listElements
-     *            the list of elements to include in the signature
+     * @param strUrl the url
+     * @param params the params to pass in the post
+     * @param listElements the list of elements to include in the signature
      * @return the response as a string
-     * @throws HttpAccessException
-     *             the exception if there is a problem
+     * @throws HttpAccessException the exception if there is a problem
      */
     private String callArchiveWs( String strUrl, Map<String, String> params, List<String> listElements )
         throws HttpAccessException
@@ -199,9 +181,8 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
     }
 
     /**
-     * setter method for _requestAuthenticatorForWS
-     *
-     * @param requestAuthenticatorForWS
+     * Setter method for requestAuthenticatorForWS
+     * @param requestAuthenticatorForWS the request authenticator
      */
     public void setRequestAuthenticatorForWS( RequestAuthenticator requestAuthenticatorForWS )
     {

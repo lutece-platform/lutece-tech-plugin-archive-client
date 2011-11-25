@@ -41,11 +41,11 @@ package fr.paris.lutece.plugins.archiveclient.service.util;
  */
 public final class ArchiveClientConstants
 {
-    public static String ARCHIVE_STATE_INITIAL = "INIT";
-    public static String ARCHIVE_STATE_USED = "USED";
-    public static String ARCHIVE_STATE_ERROR = "ERROR";
-    public static String ARCHIVE_STATE_FINAL = "FINAL";
-    public static String ARCHIVE_TYPE_ZIP = "ZIP";
+    public static final String ARCHIVE_STATE_INITIAL = "INIT";
+    public static final String ARCHIVE_STATE_USED = "USED";
+    public static final String ARCHIVE_STATE_ERROR = "ERROR";
+    public static final String ARCHIVE_STATE_FINAL = "FINAL";
+    public static final String ARCHIVE_TYPE_ZIP = "ZIP";
 
     // PARAMETERS
     public static final String PARAM_FOLDER_TO_ARCHIVE = "folder_to_archive";

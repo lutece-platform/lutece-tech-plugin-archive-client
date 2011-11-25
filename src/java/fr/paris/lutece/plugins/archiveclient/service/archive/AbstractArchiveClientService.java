@@ -33,20 +33,21 @@
  */
 package fr.paris.lutece.plugins.archiveclient.service.archive;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-
 import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientConstants;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.signrequest.AbstractAuthenticator;
 import fr.paris.lutece.util.signrequest.RequestAuthenticator;
 import fr.paris.lutece.util.url.UrlItem;
 
+import org.apache.commons.lang.StringUtils;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
 /**
- * 
+ *
  * AbstractArchiveClientService
  *
  */
@@ -89,13 +90,13 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
      */
     private String getBaseUrl(  )
     {
-    	String strBaseUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_LUTECE_BASE_URL );
+        String strBaseUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_LUTECE_BASE_URL );
 
         if ( StringUtils.isBlank( strBaseUrl ) )
         {
             strBaseUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_LUTECE_PROD_URL );
         }
-        
+
         return strBaseUrl;
     }
 }

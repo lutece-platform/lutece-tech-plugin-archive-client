@@ -39,33 +39,46 @@ import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientException
 
 /**
  *
- * @author merlinfe
+ * ArchiveClientLocalService
  *
  */
 public class ArchiveClientLocalService extends AbstractArchiveClientService
 {
     private IArchiveService _archiveService;
 
+    /**
+     * {@inheritDoc}
+     */
     public int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
-        String strArchiveType )throws ArchiveClientException
+        String strArchiveType ) throws ArchiveClientException
     {
         return _archiveService.generateArchive( strFolderToArchive, strArchiveDestination, strArchiveName,
             strArchiveType );
     }
 
-    public String informationArchive( int archiveItemKey )throws ArchiveClientException
+    /**
+     * {@inheritDoc}
+     */
+    public String informationArchive( int archiveItemKey )
+        throws ArchiveClientException
     {
-        // TODO Auto-generated method stub
         return _archiveService.informationArchive( archiveItemKey );
     }
 
-    public void removeArchive( int archiveItemKey )throws ArchiveClientException
+    /**
+     * {@inheritDoc}
+     */
+    public void removeArchive( int archiveItemKey ) throws ArchiveClientException
     {
         _archiveService.removeArchive( archiveItemKey );
     }
 
+    /**
+     * Set the archive service
+     * @param archiveService the archive service
+     */
     public void setArchiveService( IArchiveService archiveService )
     {
-        this._archiveService = archiveService;
+        _archiveService = archiveService;
     }
 }

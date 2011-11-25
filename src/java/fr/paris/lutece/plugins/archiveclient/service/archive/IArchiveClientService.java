@@ -50,6 +50,7 @@ public interface IArchiveClientService
      * @param strArchiveName the name of the archive
      * @param strArchiveType the archive type(zip,..)
      * @return the archive id
+     * @throws ArchiveClientException exception if there is a problem
      */
     int generateArchive( String strFolderToArchive, String strArchiveDestination, String strArchiveName,
         String strArchiveType ) throws ArchiveClientException;
@@ -58,14 +59,16 @@ public interface IArchiveClientService
      * return the state of the archive with the ID parameter is provided
      * @param archiveItemKey the archive id
      * @return the state of the archive
+     * @throws ArchiveClientException exception if there is a problem
      */
     String informationArchive( int archiveItemKey ) throws ArchiveClientException;
 
     /**
-     *  remove the archive with the ID parameter is provided
+     * Remove the archive with the ID parameter is provided
      * @param archiveItemKey the archive id
+     * @throws ArchiveClientException exception if there is a problem
      */
-    void removeArchive( int archiveItemKey )throws ArchiveClientException;
+    void removeArchive( int archiveItemKey ) throws ArchiveClientException;
 
     /**
      * get the url of the archive with the ID parameter is provided
