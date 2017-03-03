@@ -35,7 +35,7 @@ package fr.paris.lutece.plugins.archiveclient.service.archive;
 
 import fr.paris.lutece.plugins.archiveclient.service.util.ArchiveClientConstants;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
-import fr.paris.lutece.util.signrequest.AbstractAuthenticator;
+import fr.paris.lutece.util.signrequest.AbstractPrivateKeyAuthenticator;
 import fr.paris.lutece.util.signrequest.RequestAuthenticator;
 import fr.paris.lutece.util.url.UrlItem;
 
@@ -64,7 +64,7 @@ public abstract class AbstractArchiveClientService implements IArchiveClientServ
         listElements.add( Integer.toString( archiveItemKey ) );
 
         String strTime = Long.toString( new Date(  ).getTime(  ) );
-        String strSignature = ( (AbstractAuthenticator) _requestAuthenticatorForUrl ).buildSignature( listElements,
+        String strSignature = ( (AbstractPrivateKeyAuthenticator) _requestAuthenticatorForUrl ).buildSignature( listElements,
                 strTime );
 
         UrlItem url = new UrlItem( getBaseUrl(  ) + ArchiveClientConstants.URL_DOWNLOAD_ARCHIVE );
