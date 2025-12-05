@@ -39,7 +39,7 @@ import fr.paris.lutece.util.signrequest.AbstractPrivateKeyAuthenticator;
 import fr.paris.lutece.util.signrequest.RequestAuthenticator;
 import fr.paris.lutece.util.url.UrlItem;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
