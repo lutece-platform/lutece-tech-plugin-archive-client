@@ -41,8 +41,6 @@ import fr.paris.lutece.util.httpaccess.HttpAccess;
 import fr.paris.lutece.util.httpaccess.HttpAccessException;
 import fr.paris.lutece.util.signrequest.RequestAuthenticator;
 
-import org.apache.commons.lang.StringUtils;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -100,7 +98,6 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
     public String informationArchive( int archiveItemKey )
         throws ArchiveClientException
     {
-        String strResponse = null;
         String strUrl = AppPropertiesService.getProperty( ArchiveClientConstants.PROPERTY_WEBAPP_ARCHIVE_REST_URL ) +
             ArchiveClientConstants.URL_REST_INFORMATION_ARCHIVE;
 
@@ -114,15 +111,13 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
 
         try
         {
-            strResponse = callArchiveWs( strUrl, params, listElements );
+            return callArchiveWs( strUrl, params, listElements );
         }
         catch ( Exception e )
         {
             AppLogService.error( e );
             throw new ArchiveClientException( e );
         }
-
-        return strResponse;
     }
 
     /**
@@ -163,12 +158,10 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
     private String callArchiveWs( String strUrl, Map<String, String> params, List<String> listElements )
         throws HttpAccessException
     {
-        String strResponse = StringUtils.EMPTY;
-
         try
         {
             HttpAccess httpAccess = new HttpAccess(  );
-            strResponse = httpAccess.doPost( strUrl, params, _requestAuthenticatorForWS, listElements );
+            return httpAccess.doPost( strUrl, params, _requestAuthenticatorForWS, listElements );
         }
         catch ( HttpAccessException e )
         {
@@ -176,8 +169,6 @@ public class ArchiveClientWsService extends AbstractArchiveClientService
             AppLogService.error( strError + e.getMessage(  ), e );
             throw new HttpAccessException( strError, e );
         }
-
-        return strResponse;
     }
 
     /**
