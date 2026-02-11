@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-archive-client</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1-SNAPSHOT</version>
     <name>Lutece archive client plugin </name>
     <description>archive client plugin </description>
     <packaging>lutece-plugin</packaging>
@@ -63,6 +63,6 @@
         <connection>scm:git:https://github.com/lutece-platform/lutece-tech-plugin-archive-client.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-tech-plugin-archive-client.git</developerConnection>
         <url>https://github.com/lutece-platform/lutece-tech-plugin-archive-client.git</url>
-      <tag>plugin-archive-client-2.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
